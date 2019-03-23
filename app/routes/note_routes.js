@@ -13,13 +13,8 @@ module.exports = function(app, db) {
       }
     });
   });
-  app.post("/set/:n/:f", (req, res) => {
-    const note = { text: req.params.n, title: req.params.f };
-    const n = req.params.n;
-    const f = req.params.f;
-    console.log(f);
-
-    console.log(n);
+  app.post("/set/:title/:text", (req, res) => {
+    const note = { text: req.params.text, title: req.params.title };
     console.log(note);
     db.collection("notes").insert(note, (err, result) => {
       if (err) {
